@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace H5ProjectChatAPI.Controllers
 {
-    [Authorize]
-    [Route("api/user")]
+    [Route("api/UserController")]
     [ApiController]
     public class UserController : ControllerBase
     {
