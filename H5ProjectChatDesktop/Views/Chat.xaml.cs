@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace H5ProjectChatDesktop
+namespace H5ProjectChatDesktop.Views
 {
     /// <summary>
     /// Interaction logic for Chat.xaml

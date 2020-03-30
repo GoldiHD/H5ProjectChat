@@ -74,6 +74,8 @@ namespace H5ProjectChatAPI
             if(OpenConnection())
             {
                 string stm = "INSERT INTO users () VALUES("+UI.Username+","+UI.Password+","+UI.lastLogin+")";
+                cmd = new SQLiteCommand(stm, con);
+                cmd.ExecuteNonQuery(); 
                 CloseConnection();
             }
             

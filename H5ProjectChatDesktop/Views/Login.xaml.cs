@@ -18,22 +18,11 @@ namespace H5ProjectChatDesktop.Views
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class Login : Page
     {
-        private MainWindow _window;
         public Login()
         {
             InitializeComponent();
-            _window = (MainWindow)Application.Current.MainWindow;
-            if(_window != null)
-            {
-                _window.Width = 540;
-                _window.Height = 420;
-                _window.MinHeight = 540;
-                _window.MinWidth = 420;
-                _window.MaxHeight = 540;
-                _window.MaxWidth = 420;
-            }
         }
     }
 }
