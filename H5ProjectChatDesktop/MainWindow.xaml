@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H5ProjectChatDesktop.ValueConverters"
         mc:Ignorable="d"
-        Title="Chatter">
+        Title="Chatter" Width="1024" Height="786">
     <Grid Name="Main">
-        <Frame Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+        <Frame Name="MainFrame" Content="{Binding CurrntPage, Converter={local:ApplicationPageValueConverter}}"/>
     </Grid>
 </Window>

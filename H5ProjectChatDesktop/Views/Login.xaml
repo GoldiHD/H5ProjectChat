@@ -4,19 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H5ProjectChatDesktop.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="Login">
+    <Grid Background="#26262B" Margin="0,0,10,0" MinWidth="1024" MinHeight="768">
+        <TextBox Name="TBUsername" HorizontalAlignment="Left" Height="45" Margin="362,422,0,0" TextWrapping="Wrap" Text="{Binding Login.Username}" VerticalAlignment="Top" Width="165" Foreground="White" Background="#FF333337" FontSize="22" TextAlignment="Left"/>
+        <TextBox Name="TBIp" HorizontalAlignment="Left" Margin="629,422,0,0" TextWrapping="WrapWithOverflow" Text="{Binding Login.IP}" Width="271" Foreground="White" Background="#FF333337" Height="45" VerticalAlignment="Top" FontSize="22" TextAlignment="Left"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="245,422,0,0" VerticalAlignment="Top" Foreground="White" Width="112" FontSize="22" Height="45"/>
+        <Label Content="Password" Margin="245,497,0,226" Foreground="White" HorizontalAlignment="Left" Width="112" FontSize="22"/>
+        <Label Content="IP" Margin="590,422,0,0" Foreground="White" HorizontalAlignment="Left" Width="34" Height="45" VerticalAlignment="Top" FontSize="22"/>
 
-    <Grid>
-        <TextBox HorizontalAlignment="Center" Height="24" Margin="217,157,463,269" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120" Foreground="White" Background="#FF333337"/>
-        <TextBox HorizontalAlignment="Center" Height="24" Margin="502,157,178,269" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120" Foreground="White" Background="#FF333337"/>
-        <Label Content="Label" HorizontalAlignment="Center" Margin="148,155,614,269" VerticalAlignment="Center" Foreground="White"/>
-        <Label Content="Label" HorizontalAlignment="Center" Margin="148,244,614,180" VerticalAlignment="Center" Foreground="White"/>
-        <Label Content="Label" HorizontalAlignment="Center" Margin="446,157,316,267" VerticalAlignment="Center" Foreground="White"/>
-
-        <PasswordBox HorizontalAlignment="Center" Margin="217,252,463,180" VerticalAlignment="Center" Width="120" Foreground="White" Background="#FF333337"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="364,337,0,0" VerticalAlignment="Top" Width="75"/>
+        <PasswordBox Name="PBPassword" HorizontalAlignment="Left" Margin="362,497,0,0" Width="165" Foreground="White" Background="#FF333337" Height="45" VerticalAlignment="Top" FontSize="22"/>
+        <Button Content="Login" Margin="362,582,0,0" HorizontalAlignment="Left" Width="88" Height="45" VerticalAlignment="Top" Background="#FF26262B" Foreground="White" BorderBrush="#FFF9F9F9" FontSize="22" Command="{Binding LoginCommand}"/>
+        <Image HorizontalAlignment="Left" Margin="299,73,0,0" Width="419" Source="/H5ProjectChatDesktop;component/Assets/ChatterIcon.png" Stretch="Fill" Height="314" VerticalAlignment="Top"/>
+        <Button Content="Sign up" Margin="699,582,0,0" HorizontalAlignment="Left" Width="88" Height="45" VerticalAlignment="Top" Background="#FF26262B" Foreground="White" BorderBrush="#FFF9F9F9" FontSize="22" Command="{Binding RegistraCommand}"/>
 
     </Grid>
 </Page>

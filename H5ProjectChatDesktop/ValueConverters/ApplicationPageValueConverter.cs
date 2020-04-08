@@ -1,12 +1,8 @@
 ﻿using H5ProjectChatDesktop.Models;
 using H5ProjectChatDesktop.Views;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H5ProjectChatDesktop.ValueConverters
 {
@@ -21,6 +17,9 @@ namespace H5ProjectChatDesktop.ValueConverters
 
                 case ApplicationPage.Chat:
                     return new Chat();
+
+                case ApplicationPage.Registra:
+                    return new Registration();
 
                 default:
                     Debugger.Break();

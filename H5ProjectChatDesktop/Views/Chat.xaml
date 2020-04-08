@@ -4,11 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H5ProjectChatDesktop.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="Chat">
 
-    <Grid>
-        
+    <Grid Background="#26262B" MinHeight="768" MinWidth="1024">
+        <Button Content="Logout" Name="BuLoggout" HorizontalAlignment="Left" Margin="25,44,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22"/>
+        <Button Content="Send" Name="BuSend" HorizontalAlignment="Left" Margin="25,686,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22"/>
+        <RichTextBox Name="ChatWindow" HorizontalAlignment="Left" Height="636" Margin="138,44,0,0" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="22">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <TextBox HorizontalAlignment="Left" Height="45" Margin="138,686,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="22"/>
+
     </Grid>
 </Page>

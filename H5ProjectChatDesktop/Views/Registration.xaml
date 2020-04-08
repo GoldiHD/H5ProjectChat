@@ -1,0 +1,20 @@
+﻿<Page x:Class="H5ProjectChatDesktop.Views.Registration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:H5ProjectChatDesktop.Views"
+      mc:Ignorable="d" 
+      Title="Registration">
+    <Grid Background="#26262B" Margin="0,0,10,0" MinWidth="1024" MinHeight="768">
+        <Button Content="Registrer" HorizontalAlignment="Left" Margin="371,454,0,0" VerticalAlignment="Top" Width="100" Height="45" Foreground="White" Background="#FF26262B" FontSize="22" Command="{Binding CreateAccountCommand}"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="565,454,0,0" VerticalAlignment="Top" Width="100" Height="45" Foreground="White" Background="#FF26262B" FontSize="22" Command="{Binding BackCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="45" Margin="501,161,0,0" TextWrapping="Wrap" Text="{Binding Reg.Username}" VerticalAlignment="Top" Width="200" Background="#FF26262B" BorderBrush="#FFABADB3" Foreground="White" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Height="45" Margin="501,257,0,0" TextWrapping="Wrap" Text="{Binding Reg.Password}" VerticalAlignment="Top" Width="200" Background="#FF26262B" BorderBrush="#FFABADB3" Foreground="White" FontSize="22"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="316,161,0,0" VerticalAlignment="Top" Height="45" Width="144" Foreground="White" FontSize="22"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="316,257,0,0" VerticalAlignment="Top" Height="45" Width="144" Foreground="White" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Height="45" Margin="501,362,0,0" TextWrapping="Wrap" Text="{Binding Reg.IP}" VerticalAlignment="Top" Width="200" Background="#FF26262B" BorderBrush="#FFABADB3" Foreground="White" FontSize="22"/>
+        <Label Content="IP" HorizontalAlignment="Left" Margin="316,362,0,0" VerticalAlignment="Top" Height="45" Width="144" Foreground="White" FontSize="22"/>
+
+    </Grid>
+</Page>
