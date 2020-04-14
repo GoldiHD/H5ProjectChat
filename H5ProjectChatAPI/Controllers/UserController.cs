@@ -17,7 +17,7 @@ namespace H5ProjectChatAPI.Controllers
         // GET: api/User/
         [HttpPost()]
         [Route("Login")]
-        public ActionResult<string> Login([FromBody] UserItem value)
+        public ActionResult<UserItem> Login([FromBody] UserItem value)
         {
             UserItem user = UH.GetUserByCreditals(value.Username,value.Password);
             if (user != null)
@@ -42,7 +42,7 @@ namespace H5ProjectChatAPI.Controllers
 
 
                 var tokenJson = new JwtSecurityTokenHandler().WriteToken(token);
-                return Ok(new { access_token = tokenJson });
+                return Ok(new UserItem() { Token = tokenJson });
             }
             else
             {

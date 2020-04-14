@@ -10,6 +10,7 @@ namespace H5ProjectChatAPI
         private string cs = "Data Source=Chatdatabase.db";
         private SQLiteConnection con;
         private SQLiteCommand cmd;
+        private object Lock;
         private bool OpenConnection()
         {
             try
@@ -38,14 +39,14 @@ namespace H5ProjectChatAPI
         public List<UserItem> AccessUser()
         {
             List<UserItem> _users = new List<UserItem>();
-            if(OpenConnection())
+            if (OpenConnection())
             {
                 string stm = "SELECT * FROM users";
-                cmd = new SQLiteCommand(stm,con);
+                cmd = new SQLiteCommand(stm, con);
                 SQLiteDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
-                    _users.Add(new UserItem { Id = reader.GetInt32(0), Username = reader.GetString(1), Password = reader.GetString(2), lastLogin = DateTime.Parse(reader.GetString(3))});
+                    _users.Add(new UserItem { Id = reader.GetInt32(0), Username = reader.GetString(1), Password = reader.GetString(2), lastLogin = DateTime.Parse(reader.GetString(3)) });
                 }
                 CloseConnection();
             }
@@ -53,9 +54,9 @@ namespace H5ProjectChatAPI
         }
         public void CreateMessage(ChatItem CI)
         {
-            if(OpenConnection())
+            if (OpenConnection())
             {
-                string stm = "INSERT INTO chatData (userId, message, postTime) VALUES("+CI.posterName+","+CI.message+","+CI.postTime+")";
+                string stm = "INSERT INTO chatData (userId, message, postTime) VALUES('" + CI.posterName + "','" + CI.message + "','" + CI.postTime + "')";
                 cmd = new SQLiteCommand(stm, con);
                 cmd.ExecuteNonQuery();
                 CloseConnection();
@@ -63,29 +64,29 @@ namespace H5ProjectChatAPI
         }
         public void CreateUser(UserItem UI)
         {
-            if(OpenConnection())
+            if (OpenConnection())
             {
-                string stm = "INSERT INTO users (username, password, lastLogin) VALUES('" + UI.Username+"','"+UI.Password+"','"+ DateTime.Now+"')";
+                string stm = "INSERT INTO users (username, password, lastLogin) VALUES('" + UI.Username + "','" + UI.Password + "','" + DateTime.Now + "')";
                 cmd = new SQLiteCommand(stm, con);
-                cmd.ExecuteNonQuery(); 
+                cmd.ExecuteNonQuery();
                 CloseConnection();
-            } 
+            }
         }
         public List<ChatItem> LoadMessages(int id, int amount)
         {
             List<ChatItem> messages = new List<ChatItem>();
-            if(OpenConnection())
+            if (OpenConnection())
             {
-                string stm = "SELECT * FROM chatData LIMIT "+ amount +" OFFSET " + (id - amount);
+                string stm = "SELECT * FROM chatData LIMIT " + amount + " OFFSET " + (id - amount);
                 cmd = new SQLiteCommand(stm, con);
                 SQLiteDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
-                    messages.Add(new ChatItem { id = reader.GetInt32(0), posterName = reader.GetString(1), message = reader.GetString(2), postTime = reader.GetDateTime(3) });
+                    messages.Add(new ChatItem { id = reader.GetInt32(0), posterName = reader.GetString(1), message = reader.GetString(2), postTime = DateTime.Parse(reader.GetString(3)) });
                 }
                 CloseConnection();
             }
-            return messages;          
+            return messages;
         }
         public int LatestChatId()
         {

@@ -8,16 +8,16 @@
       Title="Chat">
 
     <Grid Background="#26262B" MinHeight="768" MinWidth="1024">
-        <Button Content="Logout" Name="BuLoggout" HorizontalAlignment="Left" Margin="25,44,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22"/>
-        <Button Content="Send" Name="BuSend" HorizontalAlignment="Left" Margin="25,686,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22"/>
-        <RichTextBox Name="ChatWindow" HorizontalAlignment="Left" Height="636" Margin="138,44,0,0" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="22">
+        <Button Content="Logout" Name="BuLoggout" HorizontalAlignment="Left" Margin="25,44,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22" Command="{Binding Logout}"/>
+        <Button Content="Send" Name="BuSend" HorizontalAlignment="Left" Margin="25,651,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22" Command="{Binding SendMessageText}"/>
+        <RichTextBox Name="ChatWindow" HorizontalAlignment="Left" Height="590" Margin="138,44,0,0" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="22" IsReadOnly="True">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text=""/>
+                    <Run Text="{Binding ChatControl.ChatData}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <TextBox HorizontalAlignment="Left" Height="45" Margin="138,686,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Height="44" Margin="138,652,0,0" TextWrapping="Wrap" Text="{Binding ChatControl.SendMessageText}" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="22"/>
 
     </Grid>
 </Page>

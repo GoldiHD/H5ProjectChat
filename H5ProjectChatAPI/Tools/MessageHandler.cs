@@ -23,6 +23,10 @@ namespace H5ProjectChatAPI.Tools
             {
                 Messages = access.LoadMessages(access.LatestChatId(), amount);
             }
+            else if(amount > LastID)
+            {
+                Messages = access.LoadMessages(access.LatestChatId(), LastID);
+            }
             else
             {
                 Messages = access.LoadMessages(LastID, amount);

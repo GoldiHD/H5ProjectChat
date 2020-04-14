@@ -1,6 +1,7 @@
 ﻿using H5ProjectChatDesktop.Entities;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -14,6 +15,7 @@ namespace H5ProjectChatDesktop.Tools
     {
         private string IP;
         private string URL;
+        private WebClient client;
 
         public async Task<bool> Login(string username, string password, string ip)
         {
@@ -27,13 +29,13 @@ namespace H5ProjectChatDesktop.Tools
                 Password = password
             });
 
-            WebClient client = new WebClient();
+            client = new WebClient();
             client.Headers["Content-Type"] = "application/json";
 
             try
             {
                 string response = client.UploadString(URL + "User/Login", "POST", jsonData);
-                SingleTon.SetUser(JsonConvert.DeserializeObject<UserItem>(response));
+                SingleTon.GetUser().Token = JsonConvert.DeserializeObject<UserItem>(response).Token;
                 return true;
             }
             catch (Exception ex)
@@ -53,7 +55,7 @@ namespace H5ProjectChatDesktop.Tools
                 Password = password
             });
 
-            WebClient client = new WebClient();
+            client = new WebClient();
             client.Headers["Content-Type"] = "application/json";
             try
             {
@@ -66,6 +68,61 @@ namespace H5ProjectChatDesktop.Tools
                 return false;
             }
 
+        }
+
+        public async Task<int> CheckLastID()
+        {
+            string URLCreateMessage = URL + "Chat/GetMessagesLastID";
+            client = new WebClient();
+            client.Headers["Content-Type"] = "application/json";
+            client.Headers[HttpRequestHeader.Authorization] = "Bearer " + SingleTon.GetUser().Token;
+            try
+            {
+                return Convert.ToInt32(client.DownloadString(URLCreateMessage));
+            }
+            catch(Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public async Task<List<ChatItem>> GetMessages(int fromID)
+        {
+            string URLCreateMessage = URL + "Chat/GetMessages";
+            client = new WebClient();
+            client.Headers["Content-Type"] = "application/json";
+            client.Headers[HttpRequestHeader.Authorization] = "Bearer " + SingleTon.GetUser().Token;
+            string jsonData = JsonConvert.SerializeObject(new ChatItem { id = fromID });
+            try
+            {
+                List<ChatItem> Messages = new List<ChatItem>();
+                Messages = JsonConvert.DeserializeObject<List<ChatItem>>(client.UploadString(URLCreateMessage, "POST", jsonData));
+                return Messages;
+            }
+            catch (Exception ex)
+            {
+                return new List<ChatItem>();
+            }
+            return new List<ChatItem>();
+        }
+
+        public async Task<bool> PostMessage(ChatItem message)
+        {
+            string URLCreateMessage = URL + "Chat/PostMessages";
+            client = new WebClient();
+            client.Headers["Content-Type"] = "application/json";
+            client.Headers[HttpRequestHeader.Authorization] = "Bearer " + SingleTon.GetUser().Token;
+            string JsonData = JsonConvert.SerializeObject(message);
+
+            try
+            {
+                client.UploadString(URLCreateMessage, "POST", JsonData);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H5ProjectChatDesktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace H5ProjectChatDesktop.Views
         public Chat()
         {
             InitializeComponent();
+            this.DataContext = new ChatViewModel(this);
         }
     }
 }

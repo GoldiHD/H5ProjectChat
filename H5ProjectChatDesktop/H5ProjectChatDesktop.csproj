@@ -60,15 +60,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Entities\UserItem.cs" />
+    <Compile Include="Models\ChatController.cs" />
     <Compile Include="Models\RegistrationController.cs" />
     <Compile Include="Tools\APIMessenger.cs" />
     <Compile Include="Entities\ChatItem.cs" />
     <Compile Include="Models\ApplicationPage.cs" />
     <Compile Include="Models\UserController.cs" />
     <Compile Include="Tools\Hashing.cs" />
+    <Compile Include="Tools\MessageUpdater.cs" />
     <Compile Include="Tools\SingleTon.cs" />
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\Commands\ChatCommandSendMessage.cs" />
+    <Compile Include="ViewModels\Commands\ChatLogoutCommand.cs" />
     <Compile Include="ViewModels\Commands\LoginPageRegitraCommand.cs" />
     <Compile Include="ViewModels\Commands\RegistrationBackCommand.cs" />
     <Compile Include="ViewModels\Commands\RegistrationCreateAccountCommand.cs" />

@@ -52,7 +52,7 @@ namespace H5ProjectChatDesktop.ViewModels
         {
             if(SingleTon.GetAPIAccess().CreateAccount(_reg.Username, _reg.Password, _reg.IP).Result)
             {
-                //say something
+                //say something if it succeds or fails
                 throw new NotImplementedException();
             }
         }

@@ -1,4 +1,5 @@
-﻿using H5ProjectChatDesktop.Models;
+﻿using H5ProjectChatDesktop.Entities;
+using H5ProjectChatDesktop.Models;
 using H5ProjectChatDesktop.Tools;
 using H5ProjectChatDesktop.Views;
 using System.Windows.Input;
@@ -38,9 +39,11 @@ namespace H5ProjectChatDesktop.ViewModels
 
         public void LoginCheck()
         {
-            
+            SingleTon.SetUser(new UserItem() { Username = _login.Username});
             if(SingleTon.GetAPIAccess().Login(_login.Username, _Page.GetPassword(), _login.IP).Result)
             {
+                //SingleTon.GetAPIAccess().CheckLastID();
+               SingleTon.GetMessageThreadUpdater().Start();
                MainWindow.WVM.ChangeWindow(ApplicationPage.Chat);
             }
 
