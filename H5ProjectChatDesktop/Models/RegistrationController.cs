@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace H5ProjectChatDesktop.Models
 {
@@ -11,6 +12,11 @@ namespace H5ProjectChatDesktop.Models
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+
+        public RegistrationController()
+        {
+            CreatedSign = Visibility.Hidden;
+        }
 
         public void OnPropertyChanged(string name)
         {
@@ -29,6 +35,20 @@ namespace H5ProjectChatDesktop.Models
             {
                 _IP = value;
                 OnPropertyChanged("IP");
+            }
+        }
+
+        private Visibility _CreatedSign;
+        public Visibility CreatedSign
+        {
+            get
+            {
+                return _CreatedSign;
+            }
+            set
+            {
+                _CreatedSign = value;
+                OnPropertyChanged("CreatedSign");
             }
         }
 

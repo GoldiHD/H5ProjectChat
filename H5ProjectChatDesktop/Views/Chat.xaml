@@ -10,7 +10,7 @@
     <Grid Background="#26262B" MinHeight="768" MinWidth="1024">
         <Button Content="Logout" Name="BuLoggout" HorizontalAlignment="Left" Margin="25,44,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22" Command="{Binding Logout}"/>
         <Button Content="Send" Name="BuSend" HorizontalAlignment="Left" Margin="25,651,0,0" VerticalAlignment="Top" Width="89" Background="#FF27272C" Foreground="White" Height="45" FontSize="22" Command="{Binding SendMessageText}"/>
-        <RichTextBox Name="ChatWindow" HorizontalAlignment="Left" Height="590" Margin="138,44,0,0" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="22" IsReadOnly="True">
+        <RichTextBox Name="ChatWindow" HorizontalAlignment="Left" Height="590" Margin="138,44,0,0" VerticalAlignment="Top" Width="828" Background="#FF27272C" Foreground="White" FontSize="18" IsReadOnly="True">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="{Binding ChatControl.ChatData}"/>

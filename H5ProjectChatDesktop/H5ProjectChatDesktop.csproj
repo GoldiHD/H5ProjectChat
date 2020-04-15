@@ -82,7 +82,6 @@
     <Compile Include="Entities\ChatItem.cs" />
     <Compile Include="Models\ApplicationPage.cs" />
     <Compile Include="Models\UserController.cs" />
-    <Compile Include="Tools\Hashing.cs" />
     <Compile Include="Tools\MessageUpdater.cs" />
     <Compile Include="Tools\SingleTon.cs" />
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
