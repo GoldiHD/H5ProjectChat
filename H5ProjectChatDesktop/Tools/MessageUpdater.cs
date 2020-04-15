@@ -24,8 +24,9 @@ namespace H5ProjectChatDesktop.Tools
                 {
                     if (SingleTon.GetMessages().LastOrDefault().id != SingleTon.GetAPIAccess().CheckLastID().Result)
                     {
+                        int id = SingleTon.GetMessages().LastOrDefault().id;
                         SingleTon.GetMessages().Clear();
-                        List<ChatItem> chatItems = SingleTon.GetAPIAccess().GetMessages(SingleTon.GetMessages().Last().id).Result;
+                        List<ChatItem> chatItems = SingleTon.GetAPIAccess().GetMessages(id).Result;
                         if (chatItems.Count != 0)
                         {
                             SingleTon.GetMessages().AddRange(chatItems);
@@ -42,7 +43,7 @@ namespace H5ProjectChatDesktop.Tools
                         ChatController.Updater();
                     }
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
             }
         }
     }

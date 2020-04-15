@@ -19,13 +19,13 @@ namespace H5ProjectChatAPI.Controllers
         [Route("Login")]
         public ActionResult<UserItem> Login([FromBody] UserItem value)
         {
-            UserItem user = UH.GetUserByCreditals(value.Username,value.Password);
+            UserItem user = UH.GetUserByCreditals(value.Username, value.Password);
             if (user != null)
             {
                 Claim[] claims = new[]
                 {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString())
-            };
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString())
+                };
                 SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Constants.Secret));
                 string algorithm = SecurityAlgorithms.HmacSha256;
 
@@ -50,12 +50,16 @@ namespace H5ProjectChatAPI.Controllers
             }
         }
 
-        
-       [HttpPost]
-       [Route("create")]
-        public void CreateUser([FromBody] UserItem value)
+
+        [HttpPost]
+        [Route("create")]
+        public IActionResult CreateUser([FromBody] UserItem value)
         {
-            UH.CreateUser(value);
+            if (UH.CreateUser(value))
+            {
+                return Ok();
+            }
+            return Forbid();
         }
     }
 }

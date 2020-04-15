@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace H5ProjectChatDesktop.Tools
 {
     class APIMessenger
@@ -46,6 +47,7 @@ namespace H5ProjectChatDesktop.Tools
 
         public async Task<bool> CreateAccount(string username, string password, string ip)
         {
+            password = BCrypt.Net.BCrypt.HashPassword(password);
             IP = ip;
             URL = "http://" + ip + "/api/";
             string URLCreateMessage = URL + "User/create";

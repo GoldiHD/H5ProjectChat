@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using H5ProjectChatAPI.Tools;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,7 @@ namespace H5ProjectChatAPI.Controllers
         [Route("PostMessages")]
         public IActionResult PostMessage([FromBody] ChatItem value)
         {
+            value.postTime = DateTime.Now;
             MH.AddMessage(value);
             return Ok();
         }

@@ -39,7 +39,7 @@ namespace H5ProjectChatDesktop.Models
             set
             {
                 _SendMessageText = value;
-                OnPropertyChanged("SendMessge");
+                OnPropertyChanged("SendMessageText");
             }
         }
 
@@ -48,7 +48,7 @@ namespace H5ProjectChatDesktop.Models
             string text = "";
             foreach (ChatItem item in SingleTon.GetMessages())
             {
-                text += item.PosterName + " " + item.postTime + "\n" + item.message + "\n\n";
+                text += item.PosterName + ": [" + item.postTime.ToString("hh:mm") +"]"+ "\n" + item.message + "\n";
             }
             ChatData = text;
         }

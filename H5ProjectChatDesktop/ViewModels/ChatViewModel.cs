@@ -47,7 +47,7 @@ namespace H5ProjectChatDesktop.ViewModels
         {
             if (_ChatControl.SendMessageText != "")
             {
-                SingleTon.GetAPIAccess().PostMessage(new Entities.ChatItem() { message = _ChatControl.SendMessageText, PosterName = SingleTon.GetUser().Username });
+                SingleTon.GetAPIAccess().PostMessage(new Entities.ChatItem() { message = _ChatControl.SendMessageText, PosterName = SingleTon.GetUser().Username});
                 _ChatControl.SendMessageText = "";
             }
         }

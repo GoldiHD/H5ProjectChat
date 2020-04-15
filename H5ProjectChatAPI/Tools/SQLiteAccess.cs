@@ -8,15 +8,18 @@ namespace H5ProjectChatAPI
     public class SQLiteAccess
     {
         private string cs = "Data Source=Chatdatabase.db";
-        private SQLiteConnection con;
+        private static SQLiteConnection con;
         private SQLiteCommand cmd;
         private object Lock;
         private bool OpenConnection()
         {
             try
             {
-                con = new SQLiteConnection(cs);
-                con.Open();
+                if(con == null)
+                {
+                    con = new SQLiteConnection(cs);
+                    con.Open();
+                }
                 return true;
             }
             catch
@@ -24,18 +27,7 @@ namespace H5ProjectChatAPI
                 return false;
             }
         }
-        private bool CloseConnection()
-        {
-            try
-            {
-                con.Close();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+     
         public List<UserItem> AccessUser()
         {
             List<UserItem> _users = new List<UserItem>();
@@ -48,7 +40,7 @@ namespace H5ProjectChatAPI
                 {
                     _users.Add(new UserItem { Id = reader.GetInt32(0), Username = reader.GetString(1), Password = reader.GetString(2), lastLogin = DateTime.Parse(reader.GetString(3)) });
                 }
-                CloseConnection();
+
             }
             return _users;
         }
@@ -58,8 +50,8 @@ namespace H5ProjectChatAPI
             {
                 string stm = "INSERT INTO chatData (userId, message, postTime) VALUES('" + CI.posterName + "','" + CI.message + "','" + CI.postTime + "')";
                 cmd = new SQLiteCommand(stm, con);
+
                 cmd.ExecuteNonQuery();
-                CloseConnection();
             }
         }
         public void CreateUser(UserItem UI)
@@ -69,7 +61,6 @@ namespace H5ProjectChatAPI
                 string stm = "INSERT INTO users (username, password, lastLogin) VALUES('" + UI.Username + "','" + UI.Password + "','" + DateTime.Now + "')";
                 cmd = new SQLiteCommand(stm, con);
                 cmd.ExecuteNonQuery();
-                CloseConnection();
             }
         }
         public List<ChatItem> LoadMessages(int id, int amount)
@@ -84,7 +75,6 @@ namespace H5ProjectChatAPI
                 {
                     messages.Add(new ChatItem { id = reader.GetInt32(0), posterName = reader.GetString(1), message = reader.GetString(2), postTime = DateTime.Parse(reader.GetString(3)) });
                 }
-                CloseConnection();
             }
             return messages;
         }
@@ -99,7 +89,6 @@ namespace H5ProjectChatAPI
                 {
                     return reader.GetInt32(0);
                 }
-                CloseConnection();
             }
 
             return 0;

@@ -10,7 +10,7 @@ namespace H5ProjectChatAPI.Tools
             List<UserItem> users = access.AccessUser();
             foreach( UserItem element in users)
             {
-                if(element.Username == username && element.Password == password)
+                if(element.Username == username && BCrypt.Net.BCrypt.Verify(password, element.Password))
                 {
                     return element;
                 }
@@ -18,9 +18,14 @@ namespace H5ProjectChatAPI.Tools
             return null;
         }
 
-        public void CreateUser(UserItem user)
+        public bool CreateUser(UserItem user)
         {
-            access.CreateUser(user);
+            if (!access.AccessUser().Exists(x => x.Username == user.Username))
+            {
+                access.CreateUser(user);
+                return true;
+            }
+            return false;
         }
     }
 }
