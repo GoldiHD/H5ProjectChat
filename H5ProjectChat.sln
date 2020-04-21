@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H5ProjectChatAPI", "H5Proje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H5ProjectChatDesktop", "H5ProjectChatDesktop\H5ProjectChatDesktop.csproj", "{D6F88CA4-AB2E-4B91-9352-260D6745943F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H5ProjectChatMobile", "H5ProjectChatMobile\H5ProjectChatMobile.csproj", "{9A3789B8-4C33-4E60-A172-068E5DBA08F4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +21,6 @@ Global
 		{D6F88CA4-AB2E-4B91-9352-260D6745943F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6F88CA4-AB2E-4B91-9352-260D6745943F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6F88CA4-AB2E-4B91-9352-260D6745943F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A3789B8-4C33-4E60-A172-068E5DBA08F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A3789B8-4C33-4E60-A172-068E5DBA08F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A3789B8-4C33-4E60-A172-068E5DBA08F4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{9A3789B8-4C33-4E60-A172-068E5DBA08F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A3789B8-4C33-4E60-A172-068E5DBA08F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A3789B8-4C33-4E60-A172-068E5DBA08F4}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
