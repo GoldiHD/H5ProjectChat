@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H5ProjectChatAPI", "H5Proje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H5ProjectChatDesktop", "H5ProjectChatDesktop\H5ProjectChatDesktop.csproj", "{D6F88CA4-AB2E-4B91-9352-260D6745943F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H5ProjectChatPWAMobile.Server", "H5ProjectChatPWAMobile\Server\H5ProjectChatPWAMobile.Server.csproj", "{B1FCDE81-0EE9-48DC-8830-857B40FF126B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H5ProjectChatPWAMobile.Client", "H5ProjectChatPWAMobile\Client\H5ProjectChatPWAMobile.Client.csproj", "{9AE72484-EE82-4EB4-930C-5A11CCA2A7F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H5ProjectChatPWAMobile.Shared", "H5ProjectChatPWAMobile\Shared\H5ProjectChatPWAMobile.Shared.csproj", "{D9F05639-3437-402A-9D1B-9DEA76A34850}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{D6F88CA4-AB2E-4B91-9352-260D6745943F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6F88CA4-AB2E-4B91-9352-260D6745943F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6F88CA4-AB2E-4B91-9352-260D6745943F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1FCDE81-0EE9-48DC-8830-857B40FF126B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1FCDE81-0EE9-48DC-8830-857B40FF126B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1FCDE81-0EE9-48DC-8830-857B40FF126B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1FCDE81-0EE9-48DC-8830-857B40FF126B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE72484-EE82-4EB4-930C-5A11CCA2A7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE72484-EE82-4EB4-930C-5A11CCA2A7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE72484-EE82-4EB4-930C-5A11CCA2A7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE72484-EE82-4EB4-930C-5A11CCA2A7F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9F05639-3437-402A-9D1B-9DEA76A34850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F05639-3437-402A-9D1B-9DEA76A34850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F05639-3437-402A-9D1B-9DEA76A34850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F05639-3437-402A-9D1B-9DEA76A34850}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
