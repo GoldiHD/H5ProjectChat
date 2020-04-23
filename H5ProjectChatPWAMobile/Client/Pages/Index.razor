@@ -1,16 +1,20 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
 
-<h1>Hello, world!</h1>
-Username
-<InputText></InputText>
-Password
-<InputText></InputText>
-<button class="btn btn-primary" @onclick="Login">Login</button>
+<h1>Chatter!</h1>
+@*<EditForm>
+    Username
+    <InputText></InputText>
+    Password
+    <InputText></InputText>
+    IP
+    <InputText></InputText>
+</EditForm>*@
+<button class="btn btn-primary" @ @onclick="Login">Login</button>
 <button class="btn btn-primary" @onclick="Register">Register</button>
-<SurveyPrompt Title="How is Blazor working for you?" />
 
 
-@code 
+@code
 {
     private void Login()
     {
@@ -19,6 +23,6 @@ Password
 
     private void Register()
     {
-
+        NavigationManager.NavigateTo("Reg");
     }
 }
