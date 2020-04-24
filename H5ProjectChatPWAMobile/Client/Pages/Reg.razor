@@ -1,20 +1,40 @@
 ﻿@page "/Reg"
-Username
-<InputText></InputText>
-Password
-<InputText></InputText>
+@inject NavigationManager NavigationManager
 
-<button class="btn btn-primary" @onclick="Back">Create</button>
-<button class="btn btn-primary" @onclick="CreateAccount">Back</button>
+<h1>Created Account</h1>
+<EditForm Model="model">
+    Username
+    <InputText id="username" @bind-Value="model.username"></InputText>
+    <br />
+    Password
+    <InputText id="password" @bind-Value="model.password"></InputText>
+    <br />
+    IP
+    <InputText id="ip" @bind-Value="model.IP"></InputText>
+    <br />
+    <text>@model.CreateState</text>
+    <br />
+</EditForm>
+<button class="btn btn-primary" @onclick="Back">Back</button>
+<button class="btn btn-primary" @onclick="CreateAccount">CreateAccount</button>
 @code {
+
+    private Model.RegModel model = new Model.RegModel();
 
     private void Back()
     {
-
+        NavigationManager.NavigateTo("");
     }
 
     private void CreateAccount()
     {
-
+        if(H5ProjectChatPWAMobile.Client.Tools.SingleTon.GetAPIAccess().CreateAccount(model.username, model.password, model.IP).Result)
+        {
+            model.CreateState = "Account successfully created";
+        }
+        else
+        {
+            model.CreateState = "Account couldn't be created, try changing username or try later";
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace H5ProjectChatPWAMobile.Client.Tools
 {
     public class SingleTon
     {
+        private static APIAccess APIAccessInstance;
         private static UserItem userInstance;
         public static void SetUser(UserItem user)
         {
@@ -18,6 +19,15 @@ namespace H5ProjectChatPWAMobile.Client.Tools
         public static UserItem GetUser()
         {
             return userInstance;
+        }
+
+        public static APIAccess GetAPIAccess()
+        {
+            if (APIAccessInstance == null)
+            {
+                APIAccessInstance = new APIAccess();
+            }
+            return APIAccessInstance;
         }
     }
 }

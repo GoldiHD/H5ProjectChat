@@ -2,23 +2,38 @@
 @inject NavigationManager NavigationManager
 
 <h1>Chatter!</h1>
-@*<EditForm>
+<EditForm Model="model">
     Username
-    <InputText></InputText>
+    <InputText id="username" @bind-Value="model.username"></InputText>
+    <br />
     Password
-    <InputText></InputText>
+    <InputText id="password" @bind-Value="model.password"></InputText>
+    <br />
     IP
-    <InputText></InputText>
-</EditForm>*@
-<button class="btn btn-primary" @ @onclick="Login">Login</button>
+    <InputText id="ip" @bind-Value="model.IP"></InputText>
+    <br />
+    <text>@model.LoginState</text>
+    <br />
+</EditForm>
+<button class="btn btn-primary" @onclick="Login">Login</button>
 <button class="btn btn-primary" @onclick="Register">Register</button>
 
 
 @code
 {
+    private Model.LoginModel model = new Model.LoginModel();
+
     private void Login()
     {
-
+        H5ProjectChatPWAMobile.Client.Tools.SingleTon.SetUser(new Entities.UserItem() { Username = model.username });
+        if (H5ProjectChatPWAMobile.Client.Tools.SingleTon.GetAPIAccess().Login(model.username, model.password, model.IP).Result)
+        {
+            NavigationManager.NavigateTo("Chat");
+        }
+        else
+        {
+            model.LoginState = "Username or password was wrong";
+        }
     }
 
     private void Register()
