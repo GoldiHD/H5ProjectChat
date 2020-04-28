@@ -9,6 +9,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.IO;
 using System.Globalization;
+using Microsoft.Extensions.Primitives;
+using System.Diagnostics;
 
 namespace H5ProjectChatPWAMobile.Client.Tools
 {
@@ -30,39 +32,26 @@ namespace H5ProjectChatPWAMobile.Client.Tools
                 Password = password
             });
 
+            HttpClient httpClient = new HttpClient();
+            //return false;
 
-            try
-            {
-                HttpClient httpClient = new HttpClient();
-                var content = JsonConvert.SerializeObject(new UserItem { Username = username, Password = password });
-                StringContent SC = new StringContent(content.ToString(), Encoding.UTF8, "application/json");
-                var response = httpClient.PostAsync(URL + "User/Test", SC);
-                string d = await response.Result.Content.ReadAsStringAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Write(ex.ToString() + " " + ex.Message.ToString());
-                return false;
-            }
-            /*
-            System.Diagnostics.Debug.WriteLine("......BEGINNNING WEBCLIENT UPLOAD......");
             client = new WebClient();
             client.Headers["Content-Type"] = "application/json";
             
             try
             {
-                string response = client.UploadString(URL + "User/Login", "POST", jsonData);
-                SingleTon.GetUser().Token = JsonConvert.DeserializeObject<UserItem>(response).Token;
+                string link = URL + "User/Test";
+                //string response = client.UploadString(URL + "User/login", "POST", jsonData);
+                string response = client.UploadString(link, "POST", jsonData);
+                //SingleTon.GetUser().Token = JsonConvert.DeserializeObject<UserItem>(response).Token;
                 return true;
             }
             catch (WebException ex)
             {
-                
-                throw new Exception(ex.Status.ToString());
+                Debug.WriteLine(".....Exception debug message.....");
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 return false;
             }
-            */
 
         }
 
