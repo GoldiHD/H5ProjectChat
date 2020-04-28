@@ -50,6 +50,42 @@ namespace H5ProjectChatAPI.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("Test")]
+        public ActionResult<UserItem> Login([FromBody] string value)
+        {
+            UserItem user = UH.GetUserByCreditals("Lars", "1234");
+            if (user != null)
+            {
+                Claim[] claims = new[]
+                {
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString())
+                };
+                SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Constants.Secret));
+                string algorithm = SecurityAlgorithms.HmacSha256;
+
+                SigningCredentials signingcreadentials = new SigningCredentials(key, algorithm);
+
+                JwtSecurityToken token = new JwtSecurityToken(
+                    Constants.Issuer,
+                    Constants.Audiance,
+                    claims,
+                    notBefore: DateTime.Now,
+                    expires: DateTime.Now.AddHours(2),
+                    signingcreadentials
+                    );
+
+
+                var tokenJson = new JwtSecurityTokenHandler().WriteToken(token);
+                return Ok(tokenJson);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+
 
         [HttpPost]
         [Route("create")]
