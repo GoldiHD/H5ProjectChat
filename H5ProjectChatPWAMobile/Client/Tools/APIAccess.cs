@@ -11,6 +11,9 @@ using System.IO;
 using System.Globalization;
 using Microsoft.Extensions.Primitives;
 using System.Diagnostics;
+using System.Windows;
+using Microsoft.AspNetCore.Components;
+using System.Net.Http.Json;
 
 namespace H5ProjectChatPWAMobile.Client.Tools
 {
@@ -33,26 +36,48 @@ namespace H5ProjectChatPWAMobile.Client.Tools
             });
 
             HttpClient httpClient = new HttpClient();
-            //return false;
 
+            #region Old api access code
+            //return false;
+            /*
             client = new WebClient();
             client.Headers["Content-Type"] = "application/json";
             
             try
             {
-                string link = URL + "User/Test";
-                //string response = client.UploadString(URL + "User/login", "POST", jsonData);
-                string response = client.UploadString(link, "POST", jsonData);
-                //SingleTon.GetUser().Token = JsonConvert.DeserializeObject<UserItem>(response).Token;
+                string response = client.DownloadString("http://localhost:56817/api/User/Test");
+                SingleTon.GetUser().Token = JsonConvert.DeserializeObject<UserItem>(response).Token;
                 return true;
             }
             catch (WebException ex)
             {
                 Debug.WriteLine(".....Exception debug message.....");
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                Console.WriteLine("Test");
                 return false;
             }
+            */
+            #endregion
+            
+            
+            try
+            {
+                //HttpResponseMessage response = await httpClient.GetAsync("http://localhost:56817/api/User/Test");
+                StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await httpClient.PostAsync();
+                Debug.WriteLine(response.StatusCode);
+                Debug.WriteLine(response.RequestMessage.Content.ReadAsStringAsync().Result);
+                Debug.WriteLine(response.ReasonPhrase);
 
+                return response.IsSuccessStatusCode;
+            }
+            catch(WebException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
+            
         }
 
         public async Task<bool> CreateAccount(string username, string password, string ip)

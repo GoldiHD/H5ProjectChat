@@ -5,9 +5,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Cors;
 
 namespace H5ProjectChatAPI.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [Route("api/User/")]
     [ApiController]
     public class UserController : ControllerBase
@@ -17,7 +19,7 @@ namespace H5ProjectChatAPI.Controllers
         // GET: api/User/
         [HttpPost()]
         [Route("Login")]
-        public ActionResult<UserItem> Login([FromBody] UserItem value)
+        public ActionResult<UserItem> Login(UserItem value)
         {
             UserItem user = UH.GetUserByCreditals(value.Username, value.Password);
             if (user != null)
@@ -50,9 +52,10 @@ namespace H5ProjectChatAPI.Controllers
             }
         }
 
-        [HttpPost]
+
+        [HttpGet]
         [Route("Test")]
-        public ActionResult<UserItem> Login([FromBody] string value)
+        public ActionResult<UserItem> GetTest()
         {
             return Ok();
         }
