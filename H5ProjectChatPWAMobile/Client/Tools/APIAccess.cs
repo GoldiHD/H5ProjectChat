@@ -65,7 +65,9 @@ namespace H5ProjectChatPWAMobile.Client.Tools
             {
                 //HttpResponseMessage response = await httpClient.GetAsync("http://localhost:56817/api/User/Test");
                 StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await httpClient.PostAsync();
+                HttpMethod httpMethod = new HttpMethod();
+                HttpRequestMessage Context = new HttpRequestMessage(httpMethod,URL+"User/Login");
+                HttpResponseMessage response = await httpClient.SendAsync(Context);
                 Debug.WriteLine(response.StatusCode);
                 Debug.WriteLine(response.RequestMessage.Content.ReadAsStringAsync().Result);
                 Debug.WriteLine(response.ReasonPhrase);
